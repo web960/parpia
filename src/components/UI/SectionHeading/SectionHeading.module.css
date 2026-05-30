@@ -1,0 +1,120 @@
+.heading {
+  margin-bottom: 3.5rem;
+}
+
+/* ---- Split: asymmetric editorial header ---- */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 2rem 3rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+/* Gold accent that anchors the baseline rule to the title column */
+.split::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 64px;
+  height: 1px;
+  background: var(--gradient-gold);
+}
+
+.lead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.index {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 500;
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201, 162, 39, 0.35);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.leadText {
+  min-width: 0;
+}
+
+.leadText .section-title {
+  margin-top: 0.4rem;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-bottom: 0.35rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--color-gray-300);
+  line-height: 1.7;
+  max-width: 42ch;
+}
+
+.action {
+  display: flex;
+}
+
+/* ---- Center: classic stacked, kept for rhythm variety ---- */
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.center .lead {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.center .section-label {
+  justify-content: center;
+}
+
+.center .description {
+  margin-top: 1rem;
+  max-width: 36rem;
+  text-align: center;
+}
+
+.center .aside {
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 860px) {
+  .heading {
+    margin-bottom: 2.5rem;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .split .aside {
+    padding-bottom: 0;
+  }
+
+  .description {
+    max-width: none;
+  }
+}

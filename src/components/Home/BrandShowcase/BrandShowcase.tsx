@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { brandShowcases } from "@/data/site";
 import Reveal from "@/components/UI/Reveal";
+import SectionHeading from "@/components/UI/SectionHeading/SectionHeading";
 
 import styles from "./BrandShowcase.module.css";
 
@@ -17,10 +18,12 @@ export default function BrandShowcase() {
     <section className={styles.section}>
       <div className="container">
         <Reveal>
-          <div className={styles.header}>
-            <span className="section-label">Refinery Partners</span>
-            <h2 className="section-title">World-Class Bullion</h2>
-          </div>
+          <SectionHeading
+            align="center"
+            eyebrow="Refinery Partners"
+            title="World-Class Bullion"
+            description="LBMA-accredited refineries trusted by central banks and private investors worldwide."
+          />
         </Reveal>
 
         <div className={styles.layout}>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import { draftMode } from "next/headers";
 
 import "@/app/globals.css";
@@ -11,17 +11,17 @@ import AppProviders from "@/components/Globals/AppProviders";
 import { PreviewNotice } from "@/components/Globals/PreviewNotice/PreviewNotice";
 import { siteConfig } from "@/data/site";
 
-const cormorant = Cormorant_Garamond({
+const interTight = Inter_Tight({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  variable: "--font-inter-tight",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -43,7 +43,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${dmSans.variable}`}
+      className={`${interTight.variable} ${inter.variable}`}
       data-scroll-behavior="smooth"
     >
       <body suppressHydrationWarning>

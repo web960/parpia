@@ -97,7 +97,12 @@
   justify-content: center;
   color: var(--color-white);
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 4px;
+  border-radius: 7px;
+  transition: background var(--transition);
+}
+
+.qtyRow button:not(:disabled):hover {
+  background: rgba(227, 181, 60, 0.18);
 }
 
 .qtyRow button:disabled {

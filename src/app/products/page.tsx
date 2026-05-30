@@ -51,13 +51,29 @@ export default async function ProductsPage() {
       <section className={styles.allProducts}>
         <div className="container">
           <h2 className={styles.sectionHeading}>All Products</h2>
-          <div className={styles.grid}>
-            {products.map((product, i) => (
-              <Reveal key={product.id} delay={(i % 4) + 1}>
-                <ProductCard product={product} />
-              </Reveal>
-            ))}
-          </div>
+          {products.length > 0 ? (
+            <div className={styles.grid}>
+              {products.map((product, i) => (
+                <Reveal key={product.id} delay={(i % 4) + 1}>
+                  <ProductCard product={product} />
+                </Reveal>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.empty}>
+              <span className={styles.emptyIcon} aria-hidden="true">
+                ◇
+              </span>
+              <h3>No products available right now</h3>
+              <p>
+                Our inventory updates frequently. Contact us directly for current
+                stock and live pricing.
+              </p>
+              <Link href="/contact" className="btn btn-primary">
+                Contact Us
+              </Link>
+            </div>
+          )}
         </div>
       </section>
     </div>

@@ -57,6 +57,8 @@ export default function AddToCartButton({
       className={`${styles.btn} ${styles.primary} ${className}`}
       onClick={handleClick}
       disabled={pending}
+      aria-busy={pending}
+      aria-live="polite"
     >
       {pending ? "Adding…" : added ? "Added ✓" : label}
     </button>

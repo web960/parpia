@@ -6,6 +6,7 @@ import { useState } from "react";
 import type { Product } from "@/types/product";
 import ProductCard from "@/components/Products/ProductCard";
 import Reveal from "@/components/UI/Reveal";
+import SectionHeading from "@/components/UI/SectionHeading/SectionHeading";
 
 import styles from "./FeaturedProducts.module.css";
 
@@ -33,13 +34,12 @@ export default function FeaturedProductsGrid({
     <section className={styles.section}>
       <div className="container">
         <Reveal>
-          <div className={styles.header}>
-            <span className="section-label">Featured</span>
-            <h2 className="section-title">Our Products</h2>
-            <p className="section-subtitle">
-              Contact us for live pricing on all bullions, coins and bars.
-            </p>
-          </div>
+          <SectionHeading
+            align="center"
+            eyebrow="Featured"
+            title="Our Products"
+            description="Contact us for live pricing on all bullions, coins and bars."
+          />
         </Reveal>
 
         <Reveal delay={1}>

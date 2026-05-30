@@ -1,7 +1,12 @@
-import Link from "next/link";
+"use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+import { heritageImage, siteConfig } from "@/data/site";
 import Reveal from "@/components/UI/Reveal";
-import { siteConfig } from "@/data/site";
+import { premiumEase } from "@/lib/motion";
 
 import styles from "./Heritage.module.css";
 
@@ -11,11 +16,27 @@ export default function Heritage() {
       <div className="container">
         <div className={styles.layout}>
           <Reveal>
-            <div className={styles.yearBlock}>
-              <span className={styles.est}>Parpia Gold and Jewels</span>
-              <span className={styles.year}>Trading LLC</span>
-              <span className={styles.in}>Dubai Gold Souk</span>
-            </div>
+            <motion.div
+              className={styles.imageBlock}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.6, ease: premiumEase }}
+            >
+              <div className={styles.imageWrap}>
+                <Image
+                  src={heritageImage.src}
+                  alt={heritageImage.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className={styles.image}
+                />
+                <div className={styles.imageOverlay} />
+              </div>
+              <div className={styles.yearBlock}>
+                <span className={styles.est}>Parpia Gold and Jewels</span>
+                <span className={styles.year}>Trading LLC</span>
+                <span className={styles.in}>Dubai Gold Souk</span>
+              </div>
+            </motion.div>
           </Reveal>
 
           <Reveal delay={2}>

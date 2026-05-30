@@ -1,6 +1,6 @@
 .section {
   padding: var(--section-padding) 0;
-  background: var(--color-black);
+  background: var(--bg-section);
   position: relative;
 }
 
@@ -13,11 +13,6 @@
   width: min(600px, 80%);
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.25), transparent);
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 3.5rem;
 }
 
 .grid {
@@ -33,7 +28,6 @@
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: all var(--transition);
   height: 100%;
   backdrop-filter: blur(12px);
   position: relative;
@@ -54,14 +48,13 @@
   z-index: 1;
 }
 
-.card:hover {
-  border-color: rgba(201, 162, 39, 0.35);
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-gold);
-}
-
 .card:hover::before {
   opacity: 1;
+}
+
+.imageMotion {
+  position: absolute;
+  inset: 0;
 }
 
 .imageWrap {
@@ -72,11 +65,6 @@
 
 .image {
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card:hover .image {
-  transform: scale(1.08);
 }
 
 .imageOverlay {
@@ -124,14 +112,9 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-gold);
-  transition: transform var(--transition);
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-}
-
-.card:hover .arrow {
-  transform: translateX(6px);
 }
 
 @media (max-width: 1024px) {

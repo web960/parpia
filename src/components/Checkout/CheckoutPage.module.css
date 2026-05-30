@@ -65,7 +65,8 @@
 .form input:focus,
 .form textarea:focus {
   outline: none;
-  border-color: rgba(201, 162, 39, 0.5);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(227, 181, 60, 0.15);
 }
 
 .radio {

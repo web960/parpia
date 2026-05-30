@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { faqItems } from "@/data/site";
 import Reveal from "@/components/UI/Reveal";
+import { premiumEase } from "@/lib/motion";
 
 import styles from "./FAQ.module.css";
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section className={styles.section} id="faq">
@@ -28,25 +31,57 @@ export default function FAQ() {
           </Reveal>
 
           <div className={styles.list}>
-            {faqItems.map((item, i) => (
-              <Reveal key={item.question} delay={(i % 3) + 1}>
-                <div
-                  className={`${styles.item} ${open === i ? styles.open : ""}`}
-                >
-                  <button
-                    className={styles.question}
-                    onClick={() => setOpen(open === i ? null : i)}
-                    aria-expanded={open === i}
+            {faqItems.map((item, i) => {
+              const isOpen = open === i;
+              const questionId = `faq-question-${i}`;
+              const panelId = `faq-panel-${i}`;
+
+              return (
+                <Reveal key={item.question} delay={(i % 3) + 1}>
+                  <motion.div
+                    className={`${styles.item} ${isOpen ? styles.open : ""}`}
+                    layout
+                    transition={{ layout: { duration: 0.35, ease: premiumEase } }}
                   >
-                    {item.question}
-                    <span className={styles.icon}>{open === i ? "−" : "+"}</span>
-                  </button>
-                  <div className={styles.answer}>
-                    <p>{item.answer}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                    <button
+                      id={questionId}
+                      className={styles.question}
+                      onClick={() => setOpen(isOpen ? null : i)}
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                    >
+                      {item.question}
+                      <motion.span
+                        className={styles.icon}
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.35, ease: premiumEase }}
+                        aria-hidden="true"
+                      >
+                        +
+                      </motion.span>
+                    </button>
+                    <motion.div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={questionId}
+                      className={styles.answer}
+                      initial={false}
+                      animate={{
+                        height: isOpen ? "auto" : 0,
+                        opacity: isOpen ? 1 : 0,
+                      }}
+                      transition={
+                        prefersReducedMotion
+                          ? { duration: 0.2 }
+                          : { duration: 0.45, ease: premiumEase }
+                      }
+                    >
+                      <p>{item.answer}</p>
+                    </motion.div>
+                  </motion.div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </div>

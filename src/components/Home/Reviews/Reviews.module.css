@@ -1,11 +1,6 @@
 .section {
   padding: var(--section-padding) 0;
-  background: var(--color-black-soft);
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
+  background: var(--bg-section-alt);
 }
 
 .grid {

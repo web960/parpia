@@ -1,0 +1,91 @@
+.section {
+  padding: var(--section-padding) 0;
+  background: var(--bg-section-warm);
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 80%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.25), transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 100%;
+  backdrop-filter: blur(12px);
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.imageMotion {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(10, 10, 10, 0.85) 100%
+  );
+  pointer-events: none;
+}
+
+.body {
+  padding: 1.5rem 1.5rem 1.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: -2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.body h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.625rem;
+  color: var(--color-white);
+}
+
+.body p {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

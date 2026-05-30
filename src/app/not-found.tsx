@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
+import styles from "./not-found.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -11,9 +14,26 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function NotFound() {
   return (
-    <main>
-      <h1>404 Not Found</h1>
-      <p>The page you are looking for does not exist.</p>
-    </main>
+    <section className={styles.wrap}>
+      <div className="container">
+        <span className="section-label" style={{ justifyContent: "center" }}>
+          Error 404
+        </span>
+        <p className={`gold-text ${styles.code}`}>404</p>
+        <h1 className={`section-title ${styles.title}`}>Page not found</h1>
+        <p className={styles.text}>
+          The page you&apos;re looking for doesn&apos;t exist or may have moved.
+          Let&apos;s get you back to something valuable.
+        </p>
+        <div className={styles.actions}>
+          <Link href="/" className="btn btn-primary">
+            Back to Home
+          </Link>
+          <Link href="/products" className="btn btn-outline">
+            Browse Products
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }

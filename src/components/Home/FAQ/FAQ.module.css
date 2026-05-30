@@ -1,6 +1,6 @@
 .section {
   padding: var(--section-padding) 0;
-  background: var(--color-black);
+  background: var(--bg-section);
 }
 
 .layout {
@@ -28,18 +28,42 @@
 }
 
 .item {
+  position: relative;
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: all var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition),
+    background var(--transition);
   background: var(--glass-bg);
   backdrop-filter: blur(8px);
+}
+
+/* Gold accent rail signals the active question at a glance */
+.item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gradient-gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition);
 }
 
 .item:hover,
 .open {
   border-color: rgba(201, 162, 39, 0.3);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.open {
+  background: rgba(201, 162, 39, 0.04);
+}
+
+.open::before {
+  transform: scaleY(1);
 }
 
 .question {
@@ -60,21 +84,21 @@
 }
 
 .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
   font-size: 1.25rem;
   font-weight: 300;
   color: var(--color-gold);
   flex-shrink: 0;
   margin-left: 1rem;
+  transform-origin: center;
 }
 
 .answer {
-  max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.open .answer {
-  max-height: 200px;
 }
 
 .answer p {

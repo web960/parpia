@@ -244,6 +244,81 @@ export const faqItems = [
   },
 ];
 
+/** Unsplash imagery — https://unsplash.com */
+const unsplash = (id: string, w = 1200) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
+
+export const showroomBanner = {
+  image: unsplash("photo-1512453979798-5ea266f8880c", 1920),
+  credit: "Dubai skyline",
+  eyebrow: "Dubai Gold Souk",
+  title: "Where Global Gold Markets Meet",
+  subtitle:
+    "Visit our showroom in the heart of Deira — steps from the world's most renowned gold trading district.",
+  cta: "Visit Our Showroom",
+  href: "/contact",
+};
+
+export const investmentPillars = [
+  {
+    title: "Secure Storage",
+    description:
+      "Partner vaults with the highest standards of security, accountability, and insured custody for your bullion.",
+    image: unsplash("photo-1567427017947-545f5f067597"),
+    credit: "Vault security",
+  },
+  {
+    title: "Live Market Pricing",
+    description:
+      "Transparent pricing derived from international spot markets — real-time rates for gold, silver, and platinum.",
+    image: unsplash("photo-1611974789855-9c136a340d14"),
+    credit: "Market data",
+  },
+  {
+    title: "Global Reach",
+    description:
+      "Operating across Africa, Asia, and Europe with trusted refining and logistics partners worldwide.",
+    image: unsplash("photo-1454165804606-c3d57bc86b40"),
+    credit: "Global trading",
+  },
+];
+
+export const tradingProcess = [
+  {
+    step: "01",
+    title: "Consult & Quote",
+    description:
+      "Contact us for live pricing on bullion, coins, scrap, or precious stones tailored to your needs.",
+    image: unsplash("photo-1556742049-0cfed4f6a45d", 400),
+  },
+  {
+    step: "02",
+    title: "Verify & Assay",
+    description:
+      "Every transaction is verified for purity and authenticity through accredited assaying partners.",
+    image: unsplash("photo-1581091226825-a6a2a5aee158", 400),
+  },
+  {
+    step: "03",
+    title: "Secure Settlement",
+    description:
+      "Complete your purchase or exchange with transparent settlement and full documentation.",
+    image: unsplash("photo-1563013544-824ae1b704d3", 400),
+  },
+  {
+    step: "04",
+    title: "Delivery or Storage",
+    description:
+      "Take physical delivery, arrange insured transport, or store with our secure vault partners.",
+    image: unsplash("photo-1601584113644-f3311a024fd0", 400),
+  },
+];
+
+export const heritageImage = {
+  src: unsplash("photo-1559628233-100c798742d9", 900),
+  alt: "Gold jewelry and precious metals display",
+};
+
 export const trustBadges = [
   "Official UAE Company",
   "Gold Souk, Deira Dubai",

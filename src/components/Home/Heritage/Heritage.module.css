@@ -1,6 +1,6 @@
 .section {
   padding: var(--section-padding) 0;
-  background: var(--color-black);
+  background: var(--bg-section);
   overflow: hidden;
 }
 
@@ -22,15 +22,43 @@
   background: linear-gradient(180deg, transparent, rgba(201, 162, 39, 0.2), transparent);
 }
 
+.imageBlock {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(10, 10, 10, 0.92) 100%
+  );
+}
+
 .yearBlock {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 2rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(8px);
+  z-index: 1;
 }
 
 .est {
@@ -44,7 +72,7 @@
 
 .year {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 500;
   line-height: 1.1;
   background: linear-gradient(
@@ -59,9 +87,9 @@
 
 .in {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-style: italic;
-  color: var(--color-gray-500);
+  color: var(--color-gray-300);
   margin-top: 0.5rem;
 }
 
@@ -84,6 +112,10 @@
 
   .layout::before {
     display: none;
+  }
+
+  .imageWrap {
+    aspect-ratio: 16/11;
   }
 
   .yearBlock {
