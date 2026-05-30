@@ -1,0 +1,212 @@
+.section {
+  padding: var(--section-padding) 0;
+  background: var(--color-black-soft);
+  position: relative;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 80%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.2), transparent);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header .section-subtitle {
+  margin: 1rem auto 0;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 0.5625rem 1.375rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  transition: all var(--transition);
+  background: var(--glass-bg);
+  backdrop-filter: blur(4px);
+}
+
+.filterBtn:hover,
+.active {
+  color: var(--color-black);
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.25);
+}
+
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.card:hover {
+  border-color: rgba(201, 162, 39, 0.35);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 1;
+  background: linear-gradient(145deg, #1a1608, #0f0f0f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  border: 2px solid rgba(201, 162, 39, 0.3);
+  border-radius: 4px;
+}
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+
+.featured {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+.bestseller {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.new {
+  background: #22c55e;
+  color: var(--color-black);
+}
+
+.soldOut {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gray-300);
+}
+
+.body {
+  padding: 1.25rem;
+}
+
+.brand {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.body h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0.35rem 0 0.5rem;
+  color: var(--color-white);
+}
+
+.specs {
+  font-size: 0.8rem;
+  color: var(--color-gray-500);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  font-variant-numeric: tabular-nums;
+}
+
+.viewBtn {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  transition: color var(--transition);
+}
+
+.viewBtn:hover {
+  color: var(--color-gold-light);
+}
+
+.cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

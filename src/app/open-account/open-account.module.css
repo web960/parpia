@@ -1,0 +1,128 @@
+.page {
+  padding-bottom: var(--section-padding);
+}
+
+.hero {
+  padding: calc(var(--section-padding) * 0.75) 0;
+  background: linear-gradient(
+    180deg,
+    var(--color-charcoal) 0%,
+    var(--color-black) 100%
+  );
+  border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.hero p {
+  max-width: 640px;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-gray-300);
+  line-height: 1.75;
+}
+
+.email {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  transition: color var(--transition);
+}
+
+.email:hover {
+  color: var(--color-gold-light);
+}
+
+.content {
+  padding: var(--section-padding) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: var(--color-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  height: 100%;
+  transition: all var(--transition);
+}
+
+.card:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+  transform: translateY(-4px);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  background: rgba(201, 162, 39, 0.1);
+  border: 1px solid rgba(201, 162, 39, 0.25);
+  border-radius: 8px;
+}
+
+.card h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: var(--color-white);
+}
+
+.card p {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--color-gray-500);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.card .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 3.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  background: rgba(201, 162, 39, 0.06);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+  border-radius: 8px;
+}
+
+.footer p {
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.95rem;
+  color: var(--color-gray-300);
+  line-height: 1.7;
+}
+
+.footer p a {
+  color: var(--color-gold);
+}
+
+.footer .btn {
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

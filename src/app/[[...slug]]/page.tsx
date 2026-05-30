@@ -6,22 +6,36 @@ import { setSeoData } from "@/utils/seoData";
 
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { ContentInfoQuery } from "@/queries/general/ContentInfoQuery";
+import { ContentMetaQuery } from "@/queries/general/ContentMetaQuery";
 import { ContentNode } from "@/gql/graphql";
 import PageTemplate from "@/components/Templates/Page/PageTemplate";
 import { nextSlugToWpSlug } from "@/utils/nextSlugToWpSlug";
 import PostTemplate from "@/components/Templates/Post/PostTemplate";
-import { SeoQuery } from "@/queries/general/SeoQuery";
+import HomePage from "@/components/Home/HomePage";
+import { siteConfig } from "@/data/site";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug?: string[] }>;
+};
+
+type ContentMetaNode = {
+  title?: string | null;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = nextSlugToWpSlug(params.slug);
+  const { slug: slugParam } = await params;
+  const slug = nextSlugToWpSlug(slugParam);
   const isPreview = slug.includes("preview");
 
-  const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode }>(
-    print(SeoQuery),
+  if (slug === "/" && !isPreview) {
+    return {
+      title: `${siteConfig.name} | ${siteConfig.tagline}`,
+      description: siteConfig.description,
+    };
+  }
+
+  const { contentNode } = await fetchGraphQL<{ contentNode: ContentMetaNode }>(
+    print(ContentMetaQuery),
     {
       slug: isPreview ? slug.split("preview/")[1] : slug,
       idType: isPreview ? "DATABASE_ID" : "URI",
@@ -32,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return notFound();
   }
 
-  const metadata = setSeoData({ seo: contentNode.seo });
+  const metadata = setSeoData({ title: contentNode.title });
 
   return {
     ...metadata,
@@ -47,8 +61,14 @@ export function generateStaticParams() {
 }
 
 export default async function Page({ params }: Props) {
-  const slug = nextSlugToWpSlug(params.slug);
+  const { slug: slugParam } = await params;
+  const slug = nextSlugToWpSlug(slugParam);
   const isPreview = slug.includes("preview");
+
+  if (slug === "/" && !isPreview) {
+    return <HomePage />;
+  }
+
   const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode }>(
     print(ContentInfoQuery),
     {

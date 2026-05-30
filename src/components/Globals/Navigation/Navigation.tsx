@@ -20,15 +20,15 @@ async function getData() {
     }
   `;
 
-  const { menuItems } = await fetchGraphQL<{
-    menuItems: RootQueryToMenuItemConnection;
-  }>(print(menuQuery));
+  try {
+    const { menuItems } = await fetchGraphQL<{
+      menuItems: RootQueryToMenuItemConnection;
+    }>(print(menuQuery));
 
-  if (menuItems === null) {
-    throw new Error("Failed to fetch data");
+    return menuItems ?? { nodes: [] };
+  } catch {
+    return { nodes: [] };
   }
-
-  return menuItems;
 }
 
 export default async function Navigation() {

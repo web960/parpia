@@ -1,6 +1,6 @@
 import { print } from "graphql/language/printer";
 
-import { ContentNode, LoginPayload } from "@/gql/graphql";
+import { ContentNode } from "@/gql/graphql";
 import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { draftMode } from "next/headers";
 import { NextResponse } from "next/server";
@@ -33,13 +33,13 @@ export async function GET(request: Request) {
   }
 `;
 
-  const { login } = await fetchGraphQL<{ login: LoginPayload }>(
-    print(mutation),
-  );
+  const { login } = await fetchGraphQL<{
+    login: { authToken: string };
+  }>(print(mutation));
 
   const authToken = login.authToken;
 
-  draftMode().enable();
+  (await draftMode()).enable();
 
   const query = gql`
     query GetContentNode($id: ID!) {

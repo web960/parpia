@@ -1,0 +1,114 @@
+.page {
+  padding-bottom: var(--section-padding);
+}
+
+.hero {
+  padding: calc(var(--section-padding) * 0.75) 0;
+  background: linear-gradient(
+    180deg,
+    var(--color-charcoal) 0%,
+    var(--color-black) 100%
+  );
+  border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.hero p {
+  max-width: 560px;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-gray-300);
+}
+
+.content {
+  padding: var(--section-padding) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.item h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.item p,
+.item a {
+  font-size: 0.95rem;
+  color: var(--color-gray-300);
+  line-height: 1.6;
+  transition: color var(--transition);
+}
+
+.item a:hover {
+  color: var(--color-gold);
+}
+
+.form {
+  padding: 2.5rem;
+  background: var(--color-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+
+.form h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  margin-bottom: 0.5rem;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-white);
+  background: var(--color-black);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: border-color var(--transition);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.form .btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

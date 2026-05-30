@@ -1,0 +1,87 @@
+.page {
+  padding-bottom: var(--section-padding);
+}
+
+.hero {
+  padding: calc(var(--section-padding) * 0.75) 0;
+  background: linear-gradient(
+    180deg,
+    var(--color-charcoal) 0%,
+    var(--color-black) 100%
+  );
+  border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.hero p {
+  max-width: 560px;
+  margin-top: 1rem;
+  color: var(--color-gray-300);
+  line-height: 1.7;
+}
+
+.categories {
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.catGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.catCard {
+  padding: 1.5rem;
+  background: var(--color-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+
+.catCard:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+}
+
+.catCard h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.catCard p {
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+  line-height: 1.6;
+}
+
+.allProducts {
+  padding: var(--section-padding) 0;
+}
+
+.sectionHeading {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .catGrid,
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .catGrid,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
