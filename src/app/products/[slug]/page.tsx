@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import {
@@ -42,23 +44,54 @@ export default async function CategoryProductsPage({ params }: Props) {
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
+      <section className={styles.heroBanner}>
+        <div className={styles.heroBannerMedia}>
+          <Image
+            src={meta.image}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className={styles.heroBannerImg}
+          />
+        </div>
         <div className="container">
-          <span className="section-label">Products</span>
-          <h1 className="section-title">{meta.title}</h1>
-          <p>{meta.description}</p>
+          <div className={styles.heroBannerInner}>
+            <Link href="/products" className={styles.breadcrumb}>
+              ← All Products
+            </Link>
+            <span className="section-label">Products</span>
+            <h1 className={styles.heroTitle}>{meta.title}</h1>
+            <p className={styles.heroText}>{meta.description}</p>
+          </div>
         </div>
       </section>
 
       <section className={styles.allProducts}>
         <div className="container">
-          <div className={styles.grid}>
-            {items.map((product, i) => (
-              <Reveal key={product.id} delay={(i % 4) + 1}>
-                <ProductCard product={product} />
-              </Reveal>
-            ))}
-          </div>
+          {items.length > 0 ? (
+            <div className={styles.grid}>
+              {items.map((product, i) => (
+                <Reveal key={product.id} delay={(i % 4) + 1}>
+                  <ProductCard product={product} />
+                </Reveal>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.empty}>
+              <span className={styles.emptyIcon} aria-hidden="true">
+                ◇
+              </span>
+              <h3>No {meta.title.toLowerCase()} in stock right now</h3>
+              <p>
+                Inventory updates frequently. Contact us for current stock and
+                live pricing on {meta.title.toLowerCase()}.
+              </p>
+              <Link href="/contact" className="btn btn-primary">
+                Contact Us
+              </Link>
+            </div>
+          )}
         </div>
       </section>
     </div>

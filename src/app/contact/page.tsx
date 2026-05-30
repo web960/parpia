@@ -10,17 +10,68 @@ export const metadata: Metadata = {
   description: `Contact ${siteConfig.name} for gold bar pricing, UAE delivery, and showroom visits.`,
 };
 
+const telHref = `tel:${siteConfig.phone.replace(/\s/g, "")}`;
+const waHref = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`;
+const mapQuery = encodeURIComponent(
+  `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.city}`,
+);
+const mapEmbed = `https://maps.google.com/maps?q=${mapQuery}&z=16&output=embed`;
+
+const contactDetails = [
+  {
+    label: "Office",
+    value: (
+      <>
+        {siteConfig.address.line1}
+        <br />
+        {siteConfig.address.line2}
+        <br />
+        {siteConfig.address.city}, {siteConfig.address.country}
+      </>
+    ),
+  },
+  { label: "Phone", value: siteConfig.phone, href: telHref },
+  {
+    label: "WhatsApp",
+    value: siteConfig.whatsapp,
+    href: waHref,
+    external: true,
+  },
+  { label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+  { label: "Hours", value: siteConfig.hours },
+];
+
 export default function ContactPage() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className="container">
-          <span className="section-label">Contact</span>
-          <h1 className="section-title">Get In Touch</h1>
-          <p>
-            Visit our Gold Souk showroom or reach out for real-time pricing and
-            private client services.
-          </p>
+          <Reveal>
+            <span className="section-label">Contact</span>
+            <h1 className={styles.heroTitle}>
+              Get in <span className="gold-text">touch</span>
+            </h1>
+            <p className={styles.heroText}>
+              Visit our Gold Souk showroom or reach out for real-time pricing and
+              private client services.
+            </p>
+            <div className={styles.quickActions}>
+              <a href={telHref} className="btn btn-primary">
+                Call Us
+              </a>
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+              >
+                WhatsApp
+              </a>
+              <a href={`mailto:${siteConfig.email}`} className="btn btn-outline">
+                Email
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -29,57 +80,42 @@ export default function ContactPage() {
           <div className={styles.grid}>
             <Reveal>
               <div className={styles.info}>
-                <div className={styles.item}>
-                  <h3>Office</h3>
-                  <p>
-                    {siteConfig.address.line1}
-                    <br />
-                    {siteConfig.address.line2}
-                    <br />
-                    {siteConfig.address.city}, {siteConfig.address.country}
-                  </p>
-                </div>
-                <div className={styles.item}>
-                  <h3>Phone</h3>
-                  <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}>
-                    {siteConfig.phone}
-                  </a>
-                </div>
-                <div className={styles.item}>
-                  <h3>WhatsApp</h3>
-                  <a
-                    href={`https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {siteConfig.whatsapp}
-                  </a>
-                </div>
-                <div className={styles.item}>
-                  <h3>Email</h3>
-                  <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-                </div>
-                <div className={styles.item}>
-                  <h3>Hours</h3>
-                  <p>{siteConfig.hours}</p>
-                </div>
+                {contactDetails.map((detail) => (
+                  <div key={detail.label} className={styles.item}>
+                    <h3>{detail.label}</h3>
+                    {detail.href ? (
+                      <a
+                        href={detail.href}
+                        {...(detail.external
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {detail.value}
+                      </a>
+                    ) : (
+                      <p>{detail.value}</p>
+                    )}
+                  </div>
+                ))}
               </div>
             </Reveal>
 
             <Reveal delay={2}>
               <form className={styles.form}>
                 <h2>Send a Message</h2>
-                <div className={styles.field}>
-                  <label htmlFor="name">Name</label>
-                  <input id="name" type="text" placeholder="Your name" />
+                <div className={styles.row}>
+                  <div className={styles.field}>
+                    <label htmlFor="name">Name</label>
+                    <input id="name" type="text" placeholder="Your name" />
+                  </div>
+                  <div className={styles.field}>
+                    <label htmlFor="phone">Phone</label>
+                    <input id="phone" type="tel" placeholder="+971 ..." />
+                  </div>
                 </div>
                 <div className={styles.field}>
                   <label htmlFor="email">Email</label>
                   <input id="email" type="email" placeholder="you@example.com" />
-                </div>
-                <div className={styles.field}>
-                  <label htmlFor="phone">Phone</label>
-                  <input id="phone" type="tel" placeholder="+971 ..." />
                 </div>
                 <div className={styles.field}>
                   <label htmlFor="message">Message</label>
@@ -95,6 +131,22 @@ export default function ContactPage() {
               </form>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.mapSection}>
+        <div className="container">
+          <Reveal>
+            <div className={styles.mapFrame}>
+              <iframe
+                title={`Map to ${siteConfig.name}`}
+                src={mapEmbed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

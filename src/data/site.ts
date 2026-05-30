@@ -1,5 +1,9 @@
 import { PARPIA_ASSETS } from "./assets";
 
+/** Unsplash imagery — https://unsplash.com */
+const unsplash = (id: string, w = 1200) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
+
 export const siteConfig = {
   name: "Parpia Gold",
   legalName: "Parpia Gold and Jewels Trading LLC",
@@ -116,40 +120,92 @@ export const services = [
   {
     id: "precious-metals",
     title: "Precious Metal Trading",
+    summary: "Gold, silver & platinum in every pre-formed grade.",
     description:
       "Buying, selling and exchange of basic ores of gold, silver, platinum and other precious metals. These can be in pre-extraction form of ingots, blocks, threads or chips in pre-forming manufacturing.",
+    image: PARPIA_ASSETS.heroInvestGold,
   },
   {
     id: "stones-pearls",
     title: "Precious Stones & Pearls Trading",
+    summary: "Pearls, diamonds, emeralds & corundum.",
     description:
       "Buying, selling and exchange of natural, cultured and artificial pre-formed pearls, diamonds, corundum, emerald, coral, precious stones and other jewellery prior to cutting and polishing.",
+    image: PARPIA_ASSETS.heroPreciousStones,
   },
   {
     id: "scrap",
     title: "Gold & Silver Scrap",
+    summary: "Best value, converted into pure bars.",
     description:
       "Our exclusive service in trading gold and silver scraps. We offer the best value with options to exchange for kilo bars, tola bars and dore bars. Specialized conversion of scraps into pure gold or silver bars.",
+    image: PARPIA_ASSETS.heroGoldScrap,
   },
   {
     id: "dealing",
     title: "Dealing Services",
+    summary: "Trade gold as a safe-haven asset.",
     description:
       "Invest in gold as a safe haven to protect your wealth. Our dealing services help you invest in gold or silver with state-of-the-art trading platforms.",
+    image: unsplash("photo-1518186285589-2f7649de83e0", 900),
   },
   {
     id: "refining",
     title: "Refining Services",
+    summary: "Assaying & melting to 999.9 fine bars.",
     description:
       "Refining and assaying through highly reputable partners in UAE, Africa and Asia. Melting and transforming scrap jewellery into highest quality gold bars.",
+    image: unsplash("photo-1610375461246-83df859d849d", 900),
   },
   {
     id: "storage",
     title: "Storage",
+    summary: "Insured custody with vault partners.",
     description:
       "Secure storage solutions for your precious metals. Our partners maintain the highest standards of security and accountability.",
+    image: unsplash("photo-1601597111158-2fceff292cdc", 900),
   },
 ];
+
+export const aboutPage = {
+  intro: {
+    image: PARPIA_ASSETS.heroInvestGold,
+    alt: "Investment-grade gold bullion bars",
+  },
+  location: {
+    image: unsplash("photo-1512453979798-5ea266f8880c", 1200),
+    alt: "Dubai skyline at dusk",
+  },
+  craft: {
+    image: PARPIA_ASSETS.goldJewelry,
+    alt: "Pile of gold jewellery for scrap trading",
+  },
+  highlights: [
+    {
+      title: "East–West Gateway",
+      description:
+        "Positioned in Dubai's Gold Souk, the crossroads of the international gold market between Africa, Asia and Europe.",
+    },
+    {
+      title: "Full-Service Desk",
+      description:
+        "Trading, dealing, refining and storage handled under one roof with transparent, market-linked pricing.",
+    },
+    {
+      title: "Trusted Refiners",
+      description:
+        "PAMP Suisse, Valcambi and Credit Suisse bullion — LBMA Good Delivery and 999.9 fine gold.",
+    },
+  ],
+  values: [
+    "Precious metal trading",
+    "Precious stones & pearl trading",
+    "Scrap gold & silver trading",
+    "Dealing",
+    "Refining",
+    "Storage",
+  ],
+};
 
 export const brandShowcases = [
   {
@@ -243,10 +299,6 @@ export const faqItems = [
     answer: siteConfig.disclaimer,
   },
 ];
-
-/** Unsplash imagery — https://unsplash.com */
-const unsplash = (id: string, w = 1200) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
 
 export const showroomBanner = {
   image: unsplash("photo-1512453979798-5ea266f8880c", 1920),

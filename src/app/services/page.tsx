@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { services, siteConfig } from "@/data/site";
@@ -16,12 +17,17 @@ export default function ServicesPage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className="container">
-          <span className="section-label">Services</span>
-          <h1 className="section-title">Our Services</h1>
-          <p>
-            From precious metal trading to scrap gold conversion, refining and
-            storage — comprehensive services from Dubai Gold Souk.
-          </p>
+          <Reveal>
+            <span className="section-label">Services</span>
+            <h1 className={styles.heroTitle}>
+              Everything for the <span className="gold-text">precious metals</span>{" "}
+              trade
+            </h1>
+            <p className={styles.heroText}>
+              From precious metal trading to scrap gold conversion, refining and
+              secure storage — a complete desk operating from the Dubai Gold Souk.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -31,15 +37,51 @@ export default function ServicesPage() {
             {services.map((service, i) => (
               <Reveal key={service.id} delay={(i % 3) + 1}>
                 <article id={service.id} className={styles.card}>
-                  <h2>{service.title}</h2>
-                  <p>{service.description}</p>
-                  <Link href="/contact" className={styles.link}>
-                    Contact Us →
-                  </Link>
+                  <div className={styles.media}>
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                      className={styles.mediaImg}
+                    />
+                    <span className={styles.badge}>{`0${i + 1}`}</span>
+                  </div>
+                  <div className={styles.body}>
+                    <h2>{service.title}</h2>
+                    <p className={styles.summary}>{service.summary}</p>
+                    <p className={styles.desc}>{service.description}</p>
+                    <Link href="/contact" className={styles.link}>
+                      Enquire Now
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
                 </article>
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className={styles.ctaSection}>
+        <div className="container">
+          <Reveal>
+            <div className={styles.cta}>
+              <h2>Tell us what you&apos;re trading</h2>
+              <p>
+                Get live pricing and a tailored quote for bullion, coins, scrap
+                or precious stones from our Gold Souk desk.
+              </p>
+              <div className={styles.ctaActions}>
+                <Link href="/contact" className="btn btn-primary">
+                  Contact Us
+                </Link>
+                <Link href="/products" className="btn btn-outline">
+                  Browse Products
+                </Link>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>
