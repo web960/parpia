@@ -1,4 +1,3 @@
-import { staticProducts } from "@/data/products";
 import type { Product, ProductCategory } from "@/types/product";
 
 import { fetchStore } from "./client";
@@ -8,10 +7,7 @@ import type { WCStoreProduct } from "./types";
 const PER_PAGE = 100;
 
 async function fetchAllStoreProducts(): Promise<WCStoreProduct[]> {
-  const products = await fetchStore<WCStoreProduct[]>(
-    `/products?per_page=${PER_PAGE}`,
-  );
-  return products;
+  return fetchStore<WCStoreProduct[]>(`/products?per_page=${PER_PAGE}`);
 }
 
 async function fetchProductsByCategorySlug(
@@ -23,50 +19,20 @@ async function fetchProductsByCategorySlug(
 }
 
 export async function getProducts(): Promise<Product[]> {
-  try {
-    const raw = await fetchAllStoreProducts();
-    if (!raw.length) return staticProducts;
-    return raw.map(mapStoreProduct);
-  } catch (error) {
-    console.error("[woocommerce] getProducts fallback:", error);
-    return staticProducts;
-  }
+  const raw = await fetchAllStoreProducts();
+  return raw.map(mapStoreProduct);
 }
 
 export async function getProductCount(): Promise<number> {
-  try {
-    const products = await getProducts();
-    return products.length;
-  } catch {
-    return staticProducts.length;
-  }
+  const products = await getProducts();
+  return products.length;
 }
 
 export async function getProductsByCategorySlug(
   wcCategorySlug: string,
 ): Promise<Product[]> {
-  try {
-    const raw = await fetchProductsByCategorySlug(wcCategorySlug);
-    return raw.map(mapStoreProduct);
-  } catch (error) {
-    console.error(
-      `[woocommerce] getProductsByCategorySlug(${wcCategorySlug}) fallback:`,
-      error,
-    );
-    return staticProducts.filter((p) => {
-      const slugMap: Record<string, ProductCategory | ProductCategory[]> = {
-        "kilo-bars": "kilo",
-        "tola-bars": "tola",
-        "investment-bars": "investment",
-        "silver-bars": "silver",
-        "gold-silver-coins": ["gold-coin", "silver-coin"],
-      };
-      const mapped = slugMap[wcCategorySlug];
-      if (!mapped) return false;
-      if (Array.isArray(mapped)) return mapped.includes(p.category);
-      return p.category === mapped;
-    });
-  }
+  const raw = await fetchProductsByCategorySlug(wcCategorySlug);
+  return raw.map(mapStoreProduct);
 }
 
 export async function getProductsByInternalCategory(
@@ -89,8 +55,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
       `/products/${encodeURIComponent(slug)}`,
     );
     return mapStoreProduct(raw);
-  } catch (error) {
-    console.error(`[woocommerce] getProductBySlug(${slug}) fallback:`, error);
-    return staticProducts.find((p) => p.id === slug) ?? null;
+  } catch {
+    return null;
   }
 }
