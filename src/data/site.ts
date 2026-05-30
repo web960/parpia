@@ -264,14 +264,14 @@ export const investmentPillars = [
     title: "Secure Storage",
     description:
       "Partner vaults with the highest standards of security, accountability, and insured custody for your bullion.",
-    image: unsplash("photo-1567427017947-545f5f067597"),
+    image: unsplash("photo-1601597111158-2fceff292cdc"),
     credit: "Vault security",
   },
   {
     title: "Live Market Pricing",
     description:
       "Transparent pricing derived from international spot markets — real-time rates for gold, silver, and platinum.",
-    image: unsplash("photo-1611974789855-9c136a340d14"),
+    image: unsplash("photo-1518186285589-2f7649de83e0"),
     credit: "Market data",
   },
   {
@@ -310,12 +310,12 @@ export const tradingProcess = [
     title: "Delivery or Storage",
     description:
       "Take physical delivery, arrange insured transport, or store with our secure vault partners.",
-    image: unsplash("photo-1601584113644-f3311a024fd0", 400),
+    image: unsplash("photo-1543699565-003b8adda5fc", 400),
   },
 ];
 
 export const heritageImage = {
-  src: unsplash("photo-1559628233-100c798742d9", 900),
+  src: unsplash("photo-1611591437281-460bfbe1220a", 900),
   alt: "Gold jewelry and precious metals display",
 };
 
