@@ -19,7 +19,7 @@
   --color-cream: #f5f0e6;
   --font-display: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
   --font-body: var(--font-inter), Inter, system-ui, sans-serif;
-  --header-height: 76px;
+  --header-height: 92px;
   --ticker-height: 40px;
   --max-width: 1240px;
   --section-padding: clamp(4rem, 8vw, 7rem);

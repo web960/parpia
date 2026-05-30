@@ -38,13 +38,13 @@
 
 .logoImg {
   width: auto;
-  height: 44px;
+  height: 80px;
   object-fit: contain;
 }
 
 @media (max-width: 480px) {
   .logoImg {
-    height: 36px;
+    height: 60px;
   }
 }
 
@@ -235,6 +235,6 @@
 
 @media (max-width: 480px) {
   .logoImg {
-    height: 36px;
+    height: 60px;
   }
 }

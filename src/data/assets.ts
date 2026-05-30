@@ -1,5 +1,5 @@
 export const PARPIA_ASSETS = {
-  logo: "https://parpiagold.com/wp-content/uploads/2024/03/PARPIA-GOLD-AND-JEWELS-TRADING-LLC-01_pn.webp",
+  logo: "/parpia-logo.png",
   heroInvestGold:
     "https://parpiagold.com/wp-content/uploads/2024/03/8f1290_381b050ca357441abd01e9c8d66f3186mv2.webp",
   heroGoldScrap:
